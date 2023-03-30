@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="head">Shopping Cart</h1>
+
+  <label for="Name" class="text" > Name</label>
+  <input type="text" id="item-name-input" class="name">
+  <label for="price" class="text">Price</label>
+  <input type="number" id="item-price-input" class="price">
+  <button id="button">Add Item</button>
+
+<table>
+  
+    <tbody id="tbody">
+  <tr>
+  <td class="first">Item Name</td>
+  <td class="first">Price</td>
+</tr>
+
+  </tbody>
+<tr>
+  <td class="last">Grand Total</td>
+  <td id="total" class="last">0</td>
+</tr>
+</table>
+<div>
+<button id="print">Print</button></div>
+<script>
+  document.getElementById("print").addEventListener("click",
+  function p (){window.print(document)})
+  let sum = 0;
+  let button = document.getElementById("button")
+button.addEventListener('click',function addprice(){  //Adding event click
+
+let name = document.getElementById("item-name-input");  // getting item name and price
+let price = document.getElementById("item-price-input");
+
+let parent = document.getElementById("tbody");  // selecting   parent to insert row
+
+let row = document.createElement("tr");
+let namecell = document.createElement("td");
+namecell.append(name.value);
+let pricecell = document.createElement("td");
+pricecell.append(price.value);
+console.log(namecell,pricecell);
+row.append(namecell);
+row.append(pricecell);
+parent.append(row);
+console.log(row)
+sum+=Number(price.value);
+document.getElementById("total").innerHTML = sum ;
+name.value = '';
+price.value='';
+});
+</script>
+</body>
+</html>
